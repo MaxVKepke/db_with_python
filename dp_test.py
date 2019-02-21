@@ -8,7 +8,7 @@ class WorkWithDb(DataBase):
         # type_varcar = 'varchar(255)'
         # data_base.add_new_column(name_table, 'region', type_varcar)
         # select_all = "select * from cityes"
-        # data_base.complete_the_request(select_all)
+        # self..make_request_select(select_all)
         # print('---------------------------------------------------------------')
 
         list_field = ['id, ', 'name',]
@@ -18,13 +18,13 @@ class WorkWithDb(DataBase):
 
         order_by = 'SELECT * FROM cityes ' \
                    'ORDER BY id'
-        self.complete_the_request(order_by)
+        self.make_request_select(order_by)
 
         test_query = ''
 
         # id = '5'
-        # data_base.delete_field(id)
-        # data_base.complete_the_request(order_by)
+        # self.delete_field(id)
+        # self.make_request_select(order_by)
 
 
 WorkWithDb().request_in_db()

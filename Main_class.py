@@ -9,7 +9,12 @@ class DataBase:
                               host='localhost')
         self.cursor = self.connection.cursor()
 
-    def complete_the_request(self, request_string):
+    def do_any_query(self, string_query):
+        print(str(string_query))
+        self.cursor.execute(string_query)
+        self.connection.commit()
+
+    def make_request_select(self, request_string):
         try:
             self.cursor.execute(request_string)
             self.connection.commit()
@@ -25,11 +30,11 @@ class DataBase:
         self.cursor.execute(add_column)
         self.connection.commit()
 
-    def add_field(self, list_name_field, list_values, table_name='cityes'):
+    def add_field(self, list_name_field, list_values, table_name='cities'):
         """
         :param list_name_field: one or few name for field, what need add in table
         :param list_values: one or faw values for field what need add in table
-        :param table_name: name of the table, where you add new field
+        :param table_name: name of the table, where you add new field (default cities)
         """
         if len(list_name_field) == len(list_values):
             print('Data is valid! All is all right')
@@ -49,8 +54,8 @@ class DataBase:
         self.connection.commit()
         print('Field is added! Good luck and have nice day')
 
-    def delete_field(self,  id, table_name='cityes'):
-        delete_field = 'DELETE FROM ' + table_name + ' WHERE id = ' + id
+    def delete_field(self, id_row, table_name='cities'):
+        delete_field = 'DELETE FROM ' + table_name + ' WHERE id = ' + id_row
         self.cursor.execute(delete_field)
         self.connection.commit()
 
